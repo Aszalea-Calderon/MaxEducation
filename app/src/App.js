@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import { Component } from "react";
+import "./App.css";
+import Person from "./Person/Person";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+class App extends Component {
+  state = {
+    persons: [
+      { name: "Aszalea", hobby: "cake" },
+      { name: "Anthony", hobby: "baking" },
+    ],
+    otherState: "some other value",
+  };
+  switchNameHandler = () => {
+    //this.state.persons[0].name ="Aszalea";  //?This is not good
+    this.setState({
+      persons: [
+        { name: "Anthony", hobby: "baking" },
+        { name: "Aszalea", hobby: "cake" },
+      ],
+    });
+  };
+  render() {
+    return (
+      <div className="App">
+        <h1>Hi</h1>
+        <p>This is working!</p>
+        <button onClick={this.switchNameHandler}> Switch Name</button>
+        <Person
+          name={this.state.persons[0].name}
+          hobby={this.state.persons[0].hobby}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+          I'm a person {/*This is an example of Children props*/}
+        </Person>
+        <Person
+          name={this.state.persons[1].name}
+          hobby={this.state.persons[1].hobby}
+        />
+        <Person />
+      </div>
+    );
+  }
 }
 
 export default App;

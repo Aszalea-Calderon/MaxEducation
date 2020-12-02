@@ -50,12 +50,26 @@ class App extends Component {
 
     let persons = null;
 
+    //This is now holding the JSX that could be rendered to the page
     if (this.state.showPersons) {
       persons = (
         <div>
-          {this.state.persons.map((person) => {
-            return <Person name={person.name} hobby={person.hobby} />;
-          })}
+          <Person
+            name={this.state.persons[0].name}
+            hobby={this.state.persons[0].hobby}
+          >
+            I'm a person {/*This is an example of Children props*/}
+          </Person>
+          <Person
+            click={this.switchNameHandler}
+            name={this.state.persons[1].name}
+            hobby={this.state.persons[1].hobby}
+          />
+          <Person
+            changed={this.nameChangeHandler}
+            name={this.state.persons[0].name}
+            hobby={this.state.persons[0].hobby}
+          />
         </div>
       );
     }
@@ -68,7 +82,7 @@ class App extends Component {
           {/* Note the toggle on the button */}
           Show friends
         </button>
-        {persons}
+        {persons} {/* //This is what is now rendering to the page */}
       </div>
     );
   }

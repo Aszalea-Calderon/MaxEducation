@@ -1,6 +1,6 @@
 import { Component } from "react";
 import "./App.css";
-import Person from "./Person/Person";
+import Person from "../Person/Person";
 
 class App extends Component {
   //Older versions of react, this was the only way to manage state. But this is how you would work with it prior to this

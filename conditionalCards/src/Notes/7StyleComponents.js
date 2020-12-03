@@ -59,10 +59,6 @@ class App extends Component {
     this.setState({ showPersons: !doesShow });
   };
   render() {
-    const style = {
-      //This is inline styling currently
-    };
-
     let persons = null;
 
     if (this.state.showPersons) {
@@ -81,12 +77,6 @@ class App extends Component {
           })}
         </div>
       );
-      // style.backgroundColor = "red"; //This is showing a red background on the button only when the button has been clicked. Note that this is overriding the backgroundColor element within styles
-      // style[":hover"] = {
-      //   //Note that we use brackets as .notation doesn't work on a string and we need to use bracket
-      //   backgroundColor: "lightred",
-      //   color: "black",
-      // };
     }
 
     //change the color based on the length of the persons list. These classnames have been assigned in app.css and we can bring them here. We are joining then so we can use both
@@ -101,7 +91,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Hi</h1>
-        <p className={classes.join(" ")}>This is working!</p>{" "}
+        <p className={classes.join(" ")}>This is working!</p>
         {/* We assigned it here*/}
         <StyledButton
           alt={this.state.showPersons}
@@ -115,4 +105,4 @@ class App extends Component {
   }
 }
 
-export default App; //This wrapping is just adding the features of Radium thoughout
+export default App;

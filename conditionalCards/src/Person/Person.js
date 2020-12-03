@@ -4,7 +4,7 @@ import "./Person.css";
 const Person = (props) => {
   return (
     <div className="Person">
-      <h1>
+      <h1 onClick={props.click}>
         My name is {props.name} and I am {Math.floor(Math.random() * 90)} years
         old. My hobby is {props.hobby}.
       </h1>

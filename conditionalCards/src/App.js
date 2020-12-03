@@ -1,8 +1,21 @@
 import { Component } from "react";
 import "./App.css";
 import Person from "./Person/Person";
+import styled from "styled-components";
 
 //This change changes when the button styles are being rendered & changes the color of the first paragraph by the amount of persons in the persons state
+const StyledButton = styled.button`
+  background-color: darksalmon;
+  box-shadow: 0 10px 4px #ccc;
+  border: 1px solid azure;
+  padding: 8px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: lightgreen;
+    color: black;
+  }
+`;
 
 class App extends Component {
   state = {
@@ -42,15 +55,6 @@ class App extends Component {
   render() {
     const style = {
       //This is inline styling currently
-      backgroundColor: "green",
-      font: "inherit",
-      border: "1px solid blue",
-      padding: "8px",
-      cursor: "pointer",
-      ":hover": {
-        backgroundColor: "lightgreen",
-        color: "black",
-      },
     };
 
     let persons = null;
@@ -93,9 +97,9 @@ class App extends Component {
         <h1>Hi</h1>
         <p className={classes.join(" ")}>This is working!</p>{" "}
         {/* We assigned it here*/}
-        <button style={style} onClick={this.togglePersonsHandler}>
+        <StyledButton onClick={this.togglePersonsHandler}>
           Show friends
-        </button>
+        </StyledButton>
         {persons}
       </div>
     );

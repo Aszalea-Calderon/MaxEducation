@@ -1,13 +1,14 @@
 import { Component } from "react";
 import "./App.css";
 import Person from "./Person/Person";
-//This change changes when the button styles are being rendered
+//This change changes when the button styles are being rendered & changes the color of the first paragraph by the amount of persons in the persons state
 
 class App extends Component {
   state = {
     persons: [
       { id: 1, name: "Aszalea", hobby: "cake" },
       { id: 2, name: "Anthony", hobby: "baking" },
+      { id: 3, name: "Pumpkin", hobby: "purring" },
     ],
     otherState: "some other value",
     showPersons: false,
@@ -40,7 +41,7 @@ class App extends Component {
   render() {
     const style = {
       //This is inline styling currently
-      backgroundColor: "white",
+      backgroundColor: "green",
       font: "inherit",
       border: "1px solid blue",
       padding: "8px",
@@ -65,13 +66,23 @@ class App extends Component {
           })}
         </div>
       );
-      style.backgroundColor = "red"; //This is showing a red background on the button only when the button has been clicked
+      style.backgroundColor = "red"; //This is showing a red background on the button only when the button has been clicked. Note that this is overriding the backgroundColor element within styles
+    }
+
+    //change the color based on the length of the persons list. These classnames have been assigned in app.css and we can bring them here. We are joining then so we can use both
+    let classes = [];
+    if (this.state.persons.length <= 2) {
+      classes.push("red"); //classes will be = ['red']
+    }
+    if (this.state.persons.length <= 1) {
+      classes.push("bold"); //classes = ['red', 'bold']
     }
 
     return (
       <div className="App">
         <h1>Hi</h1>
-        <p>This is working!</p>
+        <p className={classes.join(" ")}>This is working!</p>{" "}
+        {/* We assigned it here*/}
         <button style={style} onClick={this.togglePersonsHandler}>
           Show friends
         </button>

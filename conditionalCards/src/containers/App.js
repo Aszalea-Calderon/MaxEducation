@@ -2,6 +2,7 @@ import { Component } from "react";
 import "./App.css";
 import Person from "./Person/Person";
 import styled from "styled-components";
+import ErrorBoundaries from "./ErrorBoundaries/ErrorBoundaries";
 
 //This change changes when the button styles are being rendered & changes the color of the first paragraph by the amount of persons in the persons state
 const StyledButton = styled.button`
@@ -70,13 +71,9 @@ class App extends Component {
         <div>
           {this.state.persons.map((person, index) => {
             return (
-              <Person
-                click={() => this.deletePersonsHandeler(index)}
-                name={person.name}
-                hobby={person.hobby}
-                key={person.id}
-                changed={(event) => this.nameChangeHandler(event, person.id)}
-              />
+              <ErrorBoundaries key={person.id}>
+                <Person />
+              </ErrorBoundaries>
             );
           })}
         </div>

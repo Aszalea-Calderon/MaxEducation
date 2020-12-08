@@ -1,8 +1,8 @@
 import { Component } from "react";
 import "./App.css";
-import Person from "./Person/Person";
+import Person from "../components/Persons/Person/Person";
 import styled from "styled-components";
-import ErrorBoundaries from "./ErrorBoundaries/ErrorBoundaries";
+import ErrorBoundaries from "../components/ErrorBoundaries/ErrorBoundaries";
 
 //This change changes when the button styles are being rendered & changes the color of the first paragraph by the amount of persons in the persons state
 const StyledButton = styled.button`

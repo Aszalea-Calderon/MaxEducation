@@ -1,8 +1,7 @@
 import { Component } from "react";
 import "./App.css";
-import Person from "../components/Persons/Person/Person";
+import Persons from "../components/Persons/Persons";
 import styled from "styled-components";
-import ErrorBoundaries from "../components/ErrorBoundaries/ErrorBoundaries";
 
 //This change changes when the button styles are being rendered & changes the color of the first paragraph by the amount of persons in the persons state
 const StyledButton = styled.button`
@@ -60,22 +59,16 @@ class App extends Component {
     this.setState({ showPersons: !doesShow });
   };
   render() {
-    const style = {
-      //This is inline styling currently
-    };
-
     let persons = null;
 
     if (this.state.showPersons) {
       persons = (
         <div>
-          {this.state.persons.map((person, index) => {
-            return (
-              <ErrorBoundaries key={person.id}>
-                <Person />
-              </ErrorBoundaries>
-            );
-          })}
+          <Persons
+            persons={this.state.persons}
+            clicked={this.deletePersonsHandeler}
+            changed={this.nameChangeHandler}
+          />
         </div>
       );
       // style.backgroundColor = "red"; //This is showing a red background on the button only when the button has been clicked. Note that this is overriding the backgroundColor element within styles
